@@ -80,7 +80,6 @@ def ifloor(n):
 # naming it iround
 def iround(n):
     """Return the whole part of m/n."""
-    from __builtin__ import round
     return int(round(n))
 
 
@@ -883,8 +882,8 @@ def roman_from_fixed(date):
     day    = standard_day(j_date)
     year   = standard_year(j_date)
     month_prime = amod(1 + month, 12)
-    year_prime  = (year if month_prime <> 1 
-                   else (year + 1 if (year <> -1) else 1))
+    year_prime  = (year if month_prime != 1
+                   else (year + 1 if (year != -1) else 1))
     kalends1 = fixed_from_roman(
         roman_date(year_prime, month_prime,KALENDS, 1, False))
 
@@ -894,7 +893,7 @@ def roman_from_fixed(date):
         res = roman_date(year, month, NONES, nones_of_month(month)-day+1, False)
     elif day <= ides_of_month(month):
         res = roman_date(year, month, IDES, ides_of_month(month)-day+1, False)
-    elif (month <> FEBRUARY) or not is_julian_leap_year(year):
+    elif (month != FEBRUARY) or not is_julian_leap_year(year):
         res = roman_date(year_prime,
                          month_prime,
                          KALENDS,

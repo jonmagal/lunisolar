@@ -1,4 +1,4 @@
-from pycalcal import chinese_from_fixed, fixed_from_chinese, \
+from .pycalcal import chinese_from_fixed, fixed_from_chinese, \
                      gregorian_from_fixed, fixed_from_gregorian, \
                      chinese_new_year
 from datetime import date

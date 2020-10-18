@@ -1,17 +1,16 @@
-from pycalcal.wrappers import \
-    chinese_from_gregorian, \
-    gregorian_from_chinese, \
-    chinese_date as CDate, \
-    get_branch, \
-    get_stem, \
-    is_valid_chinese_date
+# -*- coding: utf-8 -*-
+from datetime import date
+from datetime import timedelta
+from .constants import zodiac, elements, heavenly_stems, earthly_branches
+from pycalcal.wrappers import chinese_date as CDate
+from pycalcal.wrappers import chinese_from_gregorian
+from pycalcal.wrappers import get_branch
+from pycalcal.wrappers import get_stem
+from pycalcal.wrappers import gregorian_from_chinese
+from pycalcal.wrappers import is_valid_chinese_date
 
-from constants import zodiac, elements, heavenly_stems, earthly_branches
-from exceptions import ValueError, TypeError
-from datetime import date, timedelta
 
-
-class ChineseDate():
+class ChineseDate(object):
     '''
     The most important class in this package. ChineseDate contains both the
     Chinese and Gregorian representation of a date.
