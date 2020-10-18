@@ -3,10 +3,12 @@ import unittest
 from datetime import date
 from pycalcal.wrappers import chinese_date
 
+
 class PyCalCalTestCases(unittest.TestCase):
     def setUp(self):
         self.moon_landing = date(1969, 7, 20)
         self.july_fourth = chinese_date(2009, 5, 12, True)
+        self.february_second = date(1923, 2, 16)
 
     def test_conversions(self):
         from pycalcal.wrappers import gregorian_from_chinese, chinese_from_gregorian
@@ -17,6 +19,9 @@ class PyCalCalTestCases(unittest.TestCase):
         july_fourth_greg = date(2009, 7, 4)
         self.assertEqual(gregorian_from_chinese(self.july_fourth),\
                          july_fourth_greg)
+        february_second_chinese = chinese_date(1923, 1, 1, False)
+        self.assertEqual(chinese_from_gregorian(self.february_second), \
+                         february_second_chinese)
 
     def test_valid_function(self):
         from pycalcal.wrappers import is_valid_chinese_date

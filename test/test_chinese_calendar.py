@@ -2,10 +2,12 @@ from __future__ import print_function
 import unittest
 from lunisolar import ChineseDate
 
+
 class LunarDateTestCases(unittest.TestCase):
     def setUp(self):
         self.moon_landing = ChineseDate.from_gregorian(1969, 7, 20)
         self.july_fourth = ChineseDate.from_chinese(2009, 5, 12, True)
+        self.february_second = ChineseDate.from_gregorian(1923, 2, 16)
 
     def test_construction_from_gregorian(self):
         moon_landing_gdate = self.moon_landing.gregorian_date
@@ -18,6 +20,17 @@ class LunarDateTestCases(unittest.TestCase):
         self.assertEqual(moon_landing_cdate.month, 6)
         self.assertEqual(moon_landing_cdate.day, 7)
         self.assertEqual(moon_landing_cdate.is_leap_month, False)
+
+        february_second_gdate = self.february_second.gregorian_date
+        self.assertEqual(february_second_gdate.year, 1923)
+        self.assertEqual(february_second_gdate.month, 2)
+        self.assertEqual(february_second_gdate.day, 16)
+
+        february_second_cdate = self.february_second.chinese_date
+        self.assertEqual(february_second_cdate.year, 1923)
+        self.assertEqual(february_second_cdate.month, 1)
+        self.assertEqual(february_second_cdate.day, 1)
+        self.assertEqual(february_second_cdate.is_leap_month, False)
 
     def test_construction_from_chinese(self):
         july_fourth_gdate = self.july_fourth.gregorian_date
